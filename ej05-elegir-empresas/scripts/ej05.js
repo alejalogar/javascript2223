@@ -1,13 +1,13 @@
 let empresas = ["Apple","Google","IBM","Microsoft","Nvidia","Intel","Embargos a lo bestia"]
+const choice1 = document.querySelector("#choice1")
 const choice2 = document.querySelector("#choice2")
+const studentName = document.querySelector("#studentName")
+const insertButton = document.querySelector("#insertButton")
+const errorMsg = document.querySelector("#errorMsg")
 
 //Rellenar el primer SELECT
-    //1.recuperar el primer SELECT
-    const choice1 = document.querySelector("#choice1")
-
     /*for(let i=0; i<empresas.length; i++) {
     }*/
-    
     empresas.forEach( (empresa,i) => {
         //2.crear un nodo para un nuevo OPTION
         let nuevoOption = document.createElement("OPTION")
@@ -26,17 +26,24 @@ function rellenarSegundoSelect() {
     //vaciarlo primero por si ya tuviera OPTIONS de anteriores selecciones
     choice2.innerHTML = ""
 
-    let posicionDeLaEmpresaElegida = choice1.selectedIndex
-    let optionEnLaPosicionElegida = choice1.options[posicionDeLaEmpresaElegida]
-    let valueDelOptionElegido = optionEnLaPosicionElegida.value
-    //mucho más resumido:
-    //alert("Empresa elegida: " + choice1.options[choice1.selectedIndex].value)
-
-    Array.from(choice1.options).forEach( opt => {
-        
-        choice2.append(opt.cloneNode(true))
-    })
+    if (choice1.value > 0) {
+        Array.from(choice1.options).forEach( opt => {
+            if (opt.value != choice1.value)
+            choice2.append(opt.cloneNode(true))
+        }) 
+    }
 }
+
+insertButton.addEventListener("click",function(){
+    //este botón sólo insertará en tabla cuando los 3 campos estén OK
+    if (choice1.value && choice2.value && studentName.value.trim() != "") {
+        errorMsg.textContent = ""
+        //insertamos en tabla
+        tableAdd(studentName.value, choice1.value, choice2.value)
+    } else {
+        errorMsg.textContent = "Debes rellenar correctamente los 3 campos"
+    }
+})
 
 
 
