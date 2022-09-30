@@ -1,0 +1,12 @@
+h1 {
+    color: red;
+}
+
+#divSalida {
+    border: thin solid black;
+    background-color: lightcyan;
+    width: 500px;
+    height: 100px;
+    /* min-height: 100px; */
+    overflow-y: auto;
+}
