@@ -4,6 +4,7 @@ const choice2 = document.querySelector("#choice2")
 const studentName = document.querySelector("#studentName")
 const insertButton = document.querySelector("#insertButton")
 const errorMsg = document.querySelector("#errorMsg")
+const cuerpoTable = document.querySelector("#studentsChoices>tbody")
 
 //Rellenar el primer SELECT
     /*for(let i=0; i<empresas.length; i++) {
@@ -39,11 +40,38 @@ insertButton.addEventListener("click",function(){
     if (choice1.value && choice2.value && studentName.value.trim() != "") {
         errorMsg.textContent = ""
         //insertamos en tabla
-        tableAdd(studentName.value, choice1.value, choice2.value)
+        tableAdd(studentName.value,
+                 choice1.options[choice1.selectedIndex].textContent,
+                 choice2.options[choice2.selectedIndex].textContent
+            )
     } else {
         errorMsg.textContent = "Debes rellenar correctamente los 3 campos"
     }
 })
+function tableAdd(s,e1,e2) {
+    let nuevoTR = document.createElement("TR")
+    let nuevoTD1 = document.createElement("TD")
+    let nuevoTD2 = document.createElement("TD")
+    let nuevoTD3 = document.createElement("TD")
+    nuevoTD1.textContent = s
+    nuevoTD2.textContent = e1 
+    nuevoTD3.textContent = e2
+    nuevoTR.append(nuevoTD1,nuevoTD2,nuevoTD3)
+    cuerpoTable.append(nuevoTR)
+    /* ALTERNATIVA EN EL CASO DE TABLAS 
+        let nuevoTR = cuerpoTable.insertRow()
+        let nuevoTD1 = nuevoTR.insertCell()
+        let nuevoTD2 = nuevoTR.insertCell()
+        let nuevoTD3 = nuevoTR.insertCell()
+        nuevoTD1.textContent = s
+        nuevoTD2.textContent = e1
+        nuevoTD3.textContent = e2
+    */
+   //resetear el formulario
+   choice1.value = 0    //elegir el option con value = 0, el primero
+   choice2.innerHTML = ""  //eliminar los options
+   studentName.value = ""  //vaciar la caja de texto
+}
 
 
 
