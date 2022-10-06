@@ -37,7 +37,7 @@ function rellenarSegundoSelect() {
 
 insertButton.addEventListener("click",function(){
     //este botón sólo insertará en tabla cuando los 3 campos estén OK
-    if (choice1.value && choice2.value && studentName.value.trim() != "") {
+    if (choice1.value != "0" && choice2.value != "0" && studentName.value.trim() != "") {
         errorMsg.textContent = ""
         //insertamos en tabla
         tableAdd(studentName.value,
@@ -49,14 +49,25 @@ insertButton.addEventListener("click",function(){
     }
 })
 function tableAdd(s,e1,e2) {
-    let nuevoTR = document.createElement("TR")
-    let nuevoTD1 = document.createElement("TD")
-    let nuevoTD2 = document.createElement("TD")
-    let nuevoTD3 = document.createElement("TD")
+    const nuevoTR = document.createElement("TR")
+    const nuevoTD1 = document.createElement("TD")
+    const nuevoTD2 = document.createElement("TD")
+    const nuevoTD3 = document.createElement("TD")
+    const nuevoTD4 = document.createElement("TD")
     nuevoTD1.textContent = s
     nuevoTD2.textContent = e1 
     nuevoTD3.textContent = e2
-    nuevoTR.append(nuevoTD1,nuevoTD2,nuevoTD3)
+
+    const nuevoBotonBorrar = document.createElement("BUTTON")
+    nuevoBotonBorrar.textContent = "X"
+    nuevoBotonBorrar.classList.add("btn","btn-danger", "btn-sm")
+    nuevoTD4.append(nuevoBotonBorrar)
+    nuevoBotonBorrar.addEventListener("click",function(){
+        nuevoTR.remove()
+        //this.parentNode.parentNode.remove()
+        //this.parentElement.parentElement.remove()
+    })
+    nuevoTR.append(nuevoTD1,nuevoTD2,nuevoTD3,nuevoTD4)
     cuerpoTable.append(nuevoTR)
     /* ALTERNATIVA EN EL CASO DE TABLAS 
         let nuevoTR = cuerpoTable.insertRow()
