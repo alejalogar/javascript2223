@@ -80,6 +80,3 @@ txtAdd.addEventListener("keyup",function(evento){
     if (evento.key == "Enter")
         addItemToList()
 })
-
-
-
