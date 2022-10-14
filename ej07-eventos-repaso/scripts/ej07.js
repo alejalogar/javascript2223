@@ -4,7 +4,6 @@ const mensajes = document.querySelector("#mensajes")
 const coordx = document.querySelector("#coordx")
 const coordy = document.querySelector("#coordy")
 
-
 //sacoboxeo.addEventListener("contextmenu", e => e.preventDefault());
 sacoboxeo.addEventListener("contextmenu", function(e) {
     e.preventDefault()
