@@ -6,3 +6,12 @@ h1 {
     height: 100px;
     background-color: lightgray;
 }
+#huella {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: black;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
