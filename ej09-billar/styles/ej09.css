@@ -4,14 +4,12 @@
 	background-color: lightgrey;
 	border-radius: 15px;
 	margin-top: 1em;
+	position: relative;
 }
 
-#bola {
+.bola {
+	position: absolute;
 	width: 30px;
 	height: 30px;
-	background-color: black;
 	border-radius: 15px;
-	top: 0px;
-	left: 0px;
-	position: relative;
 }
