@@ -1,0 +1,57 @@
+#tablero {
+    /* width: 10px; */
+}
+
+.celda {
+    width: 30px;
+    height: 30px;
+    border: thin solid black;
+    float: left;
+    background-image: url("../images/celda.png")
+}
+
+.celda_clicada0 {
+    background-image: url("../images/celda_clicada.png");
+    background-size: contain;
+}
+.celda_clicada1 {
+    background-image: url("../images/1.png");
+    background-size: contain;
+}
+.celda_clicada2 {
+    background-image: url("../images/2.png");
+    background-size: contain;
+}
+.celda_clicada3 {
+    background-image: url("../images/3.png");
+    background-size: contain;
+}
+.celda_clicada4 {
+    background-image: url("../images/4.png");
+    background-size: contain;
+}
+
+
+
+.celda_bandera {
+    background-image: url("../images/bandera.png");
+    background-size: contain;
+}
+/*
+.celda[data-mina="true"] {
+    background-image: url("../images/mina_explotada.png");
+}
+*/
+.mina {
+    background-image: url("../images/mina.png");
+    background-size: contain;
+}
+
+.mina_explotada {
+    background-image: url("../images/mina_explotada.png");
+    background-size: contain;
+}
+
+#records table, #records th, #records td {
+    border: thin solid black; 
+}
