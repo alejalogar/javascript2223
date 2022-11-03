@@ -2,12 +2,23 @@ const tablero = document.querySelector("#tablero")
 const labelFila = document.querySelector("#fila")
 const labelColumna = document.querySelector("#columna")
 const labelMina = document.querySelector("#mina")
+const tiempo = document.querySelector("#tiempo")
+const tablaPuntuaciones = document.querySelector("#tablaPuntuaciones>tbody")
 
-let ANCHO = 9
-let ALTO = 9
+let ANCHO = 4
+let ALTO = 4
+let NUMMINAS = 10
+let numCeldasClicadasSinMina = 0
+let tablaRecords = []
+
 generarTablero(ANCHO,ALTO)
-colocarMinas(ANCHO,ALTO,10)
+colocarMinas(ANCHO,ALTO,NUMMINAS)
+tiempo.textContent = 0
+let cronometro = setInterval(pasaUnSegundo,1000)
 
+function pasaUnSegundo() {
+    tiempo.textContent++
+}
 
 function generarTablero(ancho,alto) {
     tablero.style.width = ancho * 32 + "px"
@@ -49,6 +60,19 @@ function generarTablero(ancho,alto) {
             //CALCULAR CUÁNTAS MINAS HAY ALREDEDOR DE LA CLICADA
             let numMinasAlrededor = calcularMinasAlrededor(celda)
             celda.classList.add("celda","celda_clicada"+numMinasAlrededor)
+            //INCREMENTAR EL CONTADOR DE CELDAS CLICADAS SIN MINA
+            if (celda.dataset.clicado == "false") {
+                numCeldasClicadasSinMina++
+                celda.dataset.clicado = true
+            }
+            //COMPROBAR SI HEMOS GANADO
+            console.log("celdasClicadasSinMina= " + numCeldasClicadasSinMina)
+            if (numCeldasClicadasSinMina == ANCHO * ALTO - NUMMINAS) {
+                //GANAS LA PARTIDA
+                clearInterval(cronometro)
+                insertarPuntuacion()
+                mostrarTablaPuntuaciones()
+            }
         }
     })
 }
@@ -146,7 +170,26 @@ function calcularMinasAlrededor(celda) {
     return contador
 }
 
+function insertarPuntuacion() {
+    let nombre = prompt("Introduce tu nombre")
+    tablaRecords.push({
+        nombreJugador: nombre,
+        tiempo: tiempo.textContent
+    })
+    //Guardar en Almacenamiento Local del navegador nuestra tabla de puntuaciones
+    localStorage.setItem("tablaRecords", JSON.stringify(tablaRecords) )
+}
+
+function mostrarTablaPuntuaciones() {
+    //bucle para insertar en la tabla tantas filas como puntuaciones
+
+        //añadir una nueva fila al cuerpo de la tabla HTML
+
+        //en esa fila mostrar 3 columnas (posicion,nombre,tiempo)
+
+}
 
 function perderPartida() {
+    clearInterval(cronometro)
     console.error("HAS PERDIDO")
 }
