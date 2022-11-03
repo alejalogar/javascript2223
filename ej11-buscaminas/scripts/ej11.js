@@ -130,7 +130,7 @@ function calcularMinasAlrededor(celda) {
     //abajo
     if (celda.dataset.fila < ALTO-1 ) {
         let fila = parseInt(celda.dataset.fila) + 1
-        let columna = parseInt(celda.dataset.columna) - 1
+        let columna = parseInt(celda.dataset.columna)
         let celdaAba = todasLasCeldas[ fila*ANCHO + columna]
         if (celdaAba.dataset.mina == "true")
             contador++
@@ -138,7 +138,7 @@ function calcularMinasAlrededor(celda) {
     //abajo der
     if (celda.dataset.fila < ALTO-1 && celda.dataset.columna < ANCHO-1) {
         let fila = parseInt(celda.dataset.fila) + 1
-        let columna = parseInt(celda.dataset.columna) - 1
+        let columna = parseInt(celda.dataset.columna) + 1
         let celdaAbaDer = todasLasCeldas[ fila*ANCHO + columna]
         if (celdaAbaDer.dataset.mina == "true")
             contador++
