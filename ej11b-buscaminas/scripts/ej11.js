@@ -5,11 +5,15 @@ const labelMina = document.querySelector("#mina")
 const tiempo = document.querySelector("#tiempo")
 const tablaPuntuaciones = document.querySelector("#tablaPuntuaciones>tbody")
 
-let ANCHO = 4
-let ALTO = 4
+let ANCHO = 5
+let ALTO = 5
 let NUMMINAS = 10
 let numCeldasClicadasSinMina = 0
+
 let tablaRecords = []
+if (localStorage.getItem("tablaRecords") != null) {
+    tablaRecords = JSON.parse(localStorage.getItem("tablaRecords"))
+}
 
 generarTablero(ANCHO,ALTO)
 colocarMinas(ANCHO,ALTO,NUMMINAS)
