@@ -74,6 +74,9 @@ anyadir.addEventListener("click", function(){
         celdaOpciones.innerHTML = "<button>Borrar fila</button>"
         let botonBorrar = celdaOpciones.querySelector("button")
 
+        //actualizo totales porque acabo de añadir una fila nueva
+        calcularTotales()
+
         /* las 2 líneas anteriores equivalen a estas 3:
         let botonBorrar = document.createElement("button")
         botonBorrar.textContent = "Borrar fila"
@@ -83,6 +86,24 @@ anyadir.addEventListener("click", function(){
             nuevaFila.remove()
             /* equivalente a:
             this.parentNode.parentNode.remove() */
+            //actualizo totales porque acabo de borrar una fila 
+            calcularTotales()
         })
     }
 })
+
+const totalEnvios = document.querySelector("#totalEnvios")
+const totalPeso = document.querySelector("#totalPeso")
+
+function calcularTotales() {
+    //recuperar todas las filas del TBODY
+    let filasTbody = tablaEnvios.querySelectorAll("tbody>tr")
+    //bucle e ir sumando
+    let numTotal = filasTbody.length
+    let pesoTotal = 0
+    filasTbody.forEach(fila => {
+        pesoTotal += parseFloat(fila.children[1].textContent)
+    })
+    totalEnvios.value = numTotal
+    totalPeso.value = Math.round(pesoTotal*10)/10
+}
