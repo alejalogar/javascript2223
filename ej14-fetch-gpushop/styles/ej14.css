@@ -1,0 +1,58 @@
+body {
+    background-color: grey;
+    font-family: "Fjalla One", sans-serif;
+}
+
+div {
+    border: solid darkgreen;
+    border-radius: 8%;
+    padding: 10px;
+}
+
+#divBuscador {
+    width: 550px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#divBuscador h1 {
+    color: lightgrey;
+    text-align: center;
+}
+
+#buscador {
+    background-color: darkseagreen;
+    width: 350px;
+    margin-left: 100px;
+    font-size: 18px;
+}
+
+#divSeleccionados,
+#divResultados {
+    width: 550px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#tableSeleccionados,
+#tableResultados {
+    margin: auto;
+    width: 550px;
+}
+
+#tableSeleccionados th,
+#tableResultados th {
+    background-color: lightgrey;
+    border: thin solid black;
+}
+
+#tableSeleccionados td,
+#tableResultados td {
+    width: auto;
+    border: thin solid black;
+    text-align: center;
+}
+
+#tableSeleccionados tfoot {
+    background-color: darkseagreen;
+}
