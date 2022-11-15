@@ -6,6 +6,9 @@ formMultas.addEventListener("submit",function(ev){
 
 const conductorError = document.querySelector("#conductorError")
 const dniError = document.querySelector("#dniError")
+const tipoCarneError = document.querySelector("#tipoCarneError")
+const tipoInfraccionError = document.querySelector("#tipoInfraccionError")
+
 function formOK() {
     let todoOK = true
 
@@ -37,15 +40,22 @@ function formOK() {
         todoOK = false
         //mostrar error
     }
-    if (!tipoCarneOK()) {
+    */
+   if (!tipoCarneOK()) {
         todoOK = false
         //mostrar error
+        tipoCarneError.textContent = "Debes marcar una de las opciones"
+    } else {
+        tipoCarneError.textContent = ""
     }
+
     if (!tipoInfraccionOK()) {
         todoOK = false
         //mostrar error
+        tipoInfraccionError.textContent = "Debes marcar un tipo"
+    } else {
+        tipoInfraccionError.textContent = ""
     }
-    */
     return todoOK
 }
 
@@ -77,4 +87,19 @@ function dniOK() {
         console.log("ha fallado la exp reg")
         return 1
     }
+}
+
+const radioTipoCarne = document.getElementsByName("tc")
+function tipoCarneOK() {
+    let hayAlgunoMarcado = false
+    radioTipoCarne.forEach(radio => {
+        if (radio.checked) hayAlgunoMarcado = true
+    })
+    return hayAlgunoMarcado
+}
+
+const tipo = document.querySelector("#tipo")
+function tipoInfraccionOK() {
+    if (tipo.value == "") return false
+    else return true
 }
