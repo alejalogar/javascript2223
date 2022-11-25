@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/ej17.css">
+    <script defer src="scripts/ej17.js"></script>
+</head>
+<body>
+    <div id="divBuscador">
+        <h1>Buscador de películas</h1>
+        <input type="text" id="buscador"></input>
+        <select id="type">
+            <option value="tit">Películas</option>
+            <option value="dir">Directores</option>
+            <option value="act">Actores</option>
+            <option value="all">Todo</option>
+        </select>
+    </div>
+    <div id="divResultados">
+		<table id="tableResultados">
+			<thead>
+				<tr>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+				<tr>
+				</tr>
+			</tfoot>
+		</table>
+    </div>
+	<div id="divSeleccionados">
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox"></input></th>
+					<th colspan="2">Seleccionados</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3">
+						<input type="button" value="Marcar directores">
+						<input type="button" value="Marcar películas">
+						<input type="button" value="Marcar actores">
+						<br/>
+						<input type="button" value="Borrar marcados">
+					</input></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</body>
+</html>
